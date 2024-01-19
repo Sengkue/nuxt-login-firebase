@@ -1,6 +1,12 @@
 import colors from 'vuetify/es5/util/colors'
 
 export default {
+  routes: [
+    { path: '/register', component: '~/pages/register.vue', name: 'register' },
+    { path: '/login', component: '~/pages/login.vue', name: 'login' },
+    { path: '/userList', component: '~/pages/userList.vue', name: 'user-list' },
+    { path: '/editUser/:userId', component: '~/pages/editUser.vue', name: 'edit-user' },
+  ],
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate: '%s - nuxt-login-firebase',
@@ -43,6 +49,7 @@ export default {
     '@nuxtjs/axios',
     'cookie-universal-nuxt',
   ],
+  
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {

@@ -1,14 +1,16 @@
+<!-- Login.vue -->
 <template>
   <div>
     <h2>Login</h2>
     <input v-model="email" placeholder="Email" />
     <input v-model="password" type="password" placeholder="Password" />
     <button @click="login">Login</button>
+    <router-link to="/forgotPassword">Forgot Password?</router-link>
   </div>
 </template>
 
 <script>
-import { auth } from '~/plugins/firebase';
+import { auth, sendPasswordResetEmail } from '~/plugins/firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 
 export default {
@@ -37,9 +39,17 @@ export default {
         });
 
         // Redirect to the dashboard or any other route upon successful login
-        this.$router.push('/register');
+        this.$router.push('/dashboard');
       } catch (error) {
         console.error('Login error:', error.message);
+      }
+    },
+    async forgotPassword() {
+      try {
+        await sendPasswordResetEmail(auth, this.email);
+        console.log('Password reset email sent successfully');
+      } catch (error) {
+        console.error('Password reset error:', error.message);
       }
     },
   },

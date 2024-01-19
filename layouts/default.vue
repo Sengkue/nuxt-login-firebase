@@ -99,13 +99,18 @@ export default {
       items: [
         {
           icon: 'mdi-apps',
-          title: 'Welcome',
+          title: 'login',
           to: '/'
         },
         {
           icon: 'mdi-chart-bubble',
           title: 'register',
           to: '/register'
+        },
+        {
+          icon: 'mdi-chart-bubble',
+          title: 'user',
+          to: '/userList'
         }
       ],
       miniVariant: false,
